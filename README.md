@@ -1,4 +1,4 @@
-###### Created by Littlekitty2000
+###### Still in Beta
 # GJTP Censor Tool
 I created this tool because I'm a user of Game Jolt (gamejolt.com) and am SICK of the GJTP Raids
 
