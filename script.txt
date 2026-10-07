@@ -1,0 +1,51 @@
+// ==UserScript==
+// @name         Game Jolt GJTP Blocker
+// @namespace    http://tampermonkey.net
+// @version      5.0
+// @description  Hides shit
+// @author       Littlekitty2000
+// @match        https://gamejolt.com/*
+// @grant        GM_addStyle
+// @run-at       document-start
+// @license MIT
+// ==/UserScript==
+ 
+(function() {
+    'use strict';
+ 
+    const elementsToBlock = [
+        'a.-add',
+        '._player',
+        '._overlay _ui _paused-cursor',
+        '.-inline-button',
+        'div.-posts',
+        '.-inner-media',
+        'img.img-responsive _img',
+        '._media', // Main page images and videos
+        // Next two are random buttons I think
+        'button.button -trans -circle -sparse',
+        'button.button -trans -circle -sparse -control-margin',
+        '.img-responsive content-image',
+        // Comment section
+        // Next two are the Notification Icon
+        '#popper-4.popper',
+        '#popper-58.popper',
+        '.-cover-img', // Profile banner
+        'span.user-avatar-img._img' // Profile image
+    ];
+ 
+    const cssRule = elementsToBlock.join(', ') + ' { ' +
+        'display: none !important; ' +
+        'visibility: hidden !important; ' +
+        'pointer-events: none !important; ' +
+        '}';
+ 
+    if (typeof GM_addStyle !== 'undefined') {
+        GM_addStyle(cssRule);
+    } else {
+        const style = document.createElement('style');
+        style.textContent = cssRule;
+        document.documentElement.appendChild(style);
+    }
+})();
+// I don't know this language, so I used an AI to make a template, apoligies. -LK2
